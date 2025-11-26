@@ -6,8 +6,6 @@ export const meta=()=>([
 
     {title:'Resumind | Auth'},
     {name:'description',content:'log into your account'},
-
-
 ])
 
 const Auth = () => {

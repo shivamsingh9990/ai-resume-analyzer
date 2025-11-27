@@ -4,6 +4,7 @@ import {usePuterStore} from "~/lib/puter";
 import Summary from "~/components/Summary";
 import ATS from "~/components/ATS";
 import Details from "~/components/Details";
+import {resume} from "react-dom/server";
 export const meta=()=>([
 
     {title:'Resumind | Review'},
@@ -34,7 +35,7 @@ const Resume = () => {
             const resumeUrl=URL.createObjectURL(pdfBlob);
             setResumeUrl(resumeUrl);
 
-            const imageBlob=await fs.read(data.resumePath);
+            const imageBlob=await fs.read(data.imagePath);
             if(!imageBlob) return;
             const imageUrl=URL.createObjectURL(imageBlob);
             setImageUrl(imageUrl);
@@ -59,9 +60,10 @@ const Resume = () => {
           <div className="flex flex-row w-full max-lg:flex-col-reverse">
               <section className="feedback-section bg-url[('/public/images/bg-small.svg')]bg-cover h-[100vh] sticky top-0 items-center justify-center">
                   {imageUrl && resumeUrl &&(
-                      <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit ">
+                      <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[100%] max-wxl:h-fit w-fit ">
                           <a href={resumeUrl} target={"_blank"} rel="noopener noreferrer">
                               <img
+                                  alt={imageUrl}
                               src={imageUrl}
                               className="w-full h-full object-contain rounded-2xl"
                               title="resume"

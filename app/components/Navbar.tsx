@@ -9,6 +9,7 @@ const Navbar:() => React.JSX.Element=()=>{
           <Link to="/upload" className="primary-button w-fit">
              upload resume
           </Link>
+
       </nav>
     )
 }

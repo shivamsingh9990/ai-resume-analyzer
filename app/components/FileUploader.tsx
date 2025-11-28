@@ -45,6 +45,8 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
 
                         </div>
                             <button className="p-2 cursor-pointer" onClick={(e)=>{
+                                e.stopPropagation();
+                                setFile(null);
                                 onFileSelect?.(null)
                             }}>
                                 <img src="/public/icons/cross.svg" alt="remove" className="w-4 h-4"/>
@@ -59,7 +61,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                                 <span className="font-semibold">Click to upload</span> or drag
                                 and drop
                             </p>
-                            <p className="text-lg text-gray-500">PDF (max {formatSize(maxFileSize)})20 MB)</p>
+                            <p className="text-lg text-gray-500">PDF (max {formatSize(maxFileSize)})</p>
                         </div>
                     )}
                 </div>

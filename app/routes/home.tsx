@@ -4,7 +4,7 @@ import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
 import {usePuterStore} from "~/lib/puter";
 import {Link, useNavigate} from "react-router";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 export function meta({}: Route.MetaArgs) {
@@ -38,7 +38,14 @@ export default function Home() {
     }, []);
 
     return <main className="bg-[url('/public/images/bg-main.svg')] bg-cover">
-        <Navbar/>
+        <div className="flex "> <Navbar/>
+            <Link to="/wipe" className="primary-button w-fit mr-5 h-fit mt-3 flex items-center justify-center">
+                Wipe Data
+            </Link>
+
+
+        </div>
+
         <section className="main-section">
             <div className="page-heading py-16">
                 <h1>Track your Application and resume ratings </h1>
@@ -64,16 +71,19 @@ export default function Home() {
                         <ResumeCard key={resume.id} resume={resume}/>
                     ))}
 
-                </div>
 
+                </div>
             )}
             {!loadingResumes && resumes.length===0 &&(
                 <div className="flex flex-col items-center justify-center mt-10 gap-4">
-                    <Link to="/upload" className="primeary-button w-fit text-xl font-seimibold">upload Resume</Link>
+                    <Link to="/upload" className="primary-button w-fit text-xl font-seimibold">upload Resume</Link>
+
                 </div>
             )}
 
         </section>
+
+
 
     </main>
 }
